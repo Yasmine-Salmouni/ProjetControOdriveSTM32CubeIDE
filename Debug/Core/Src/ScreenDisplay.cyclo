@@ -1,0 +1,26 @@
+../Core/Src/ScreenDisplay.cpp:12:2:ScreenDisplay::ScreenDisplay(UART_HandleTypeDef*)	1
+../Core/Src/ScreenDisplay.cpp:14:7:void ScreenDisplay::sendCommand(const char*)	1
+../Core/Src/ScreenDisplay.cpp:20:7:void ScreenDisplay::sendText(const char*, const char*)	1
+../Core/Src/ScreenDisplay.cpp:26:7:void ScreenDisplay::sendValue(const char*, float, const char*)	1
+../Core/Src/ScreenDisplay.cpp:40:7:void ScreenDisplay::showCadence(float)	1
+../Core/Src/ScreenDisplay.cpp:44:7:void ScreenDisplay::showTorque(float)	1
+../Core/Src/ScreenDisplay.cpp:48:7:void ScreenDisplay::showPower(float)	1
+../Core/Src/ScreenDisplay.cpp:52:7:void ScreenDisplay::showMode(const char*)	1
+../Core/Src/ScreenDisplay.cpp:56:7:void ScreenDisplay::showMode(ControlMode)	6
+../Core/Src/ScreenDisplay.cpp:72:7:void ScreenDisplay::showGain(float)	1
+../Core/Src/ScreenDisplay.cpp:76:7:void ScreenDisplay::showError(const char*)	1
+../Core/Src/ScreenDisplay.cpp:80:7:void ScreenDisplay::showWelcome()	1
+../Core/Src/ScreenDisplay.cpp:84:7:void ScreenDisplay::clearScreen()	1
+../Core/Src/ScreenDisplay.cpp:88:10:int32_t ScreenDisplay::readInt32()	3
+../Core/Src/ScreenDisplay.cpp:109:8:float ScreenDisplay::getUserCadence()	1
+../Core/Src/ScreenDisplay.cpp:115:7:float ScreenDisplay::getUserPower()	1
+../Core/Src/ScreenDisplay.cpp:121:7:float ScreenDisplay::getUserTorque()	1
+../Core/Src/ScreenDisplay.cpp:127:13:ControlMode ScreenDisplay::getMode()	6
+../Core/Src/ScreenDisplay.cpp:141:7:float ScreenDisplay::getUserLinearGain()	1
+../Core/Src/ScreenDisplay.cpp:148:6:void ScreenDisplay::showDutyCycle(float)	1
+../Core/Src/ScreenDisplay.cpp:156:6:void ScreenDisplay::showDirection(DirectionMode)	2
+../Core/Src/ScreenDisplay.cpp:161:6:bool ScreenDisplay::getStop()	1
+../Core/Src/ScreenDisplay.cpp:168:15:DirectionMode ScreenDisplay::getDirection()	2
+../Core/Src/ScreenDisplay.cpp:174:7:float ScreenDisplay::getRampRate()	1
+../Core/Src/ScreenDisplay.cpp:182:6:bool ScreenDisplay::getCalibrateRequest()	1
+../Core/Src/ScreenDisplay.cpp:189:6:void ScreenDisplay::showCalibrationStatus(bool)	2

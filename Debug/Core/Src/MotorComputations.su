@@ -1,0 +1,6 @@
+../Core/Src/MotorComputations.cpp:8:1:MotorComputations::MotorComputations(float)	16	static
+../Core/Src/MotorComputations.cpp:11:7:float MotorComputations::computeTorqueFromCurrent(float) const	16	static
+../Core/Src/MotorComputations.cpp:15:7:float MotorComputations::computeCurrentFromTorque(float) const	16	static
+../Core/Src/MotorComputations.cpp:19:7:float MotorComputations::computeOmega(float) const	16	static
+../Core/Src/MotorComputations.cpp:23:7:float MotorComputations::computePower(float, float) const	32	static
+../Core/Src/MotorComputations.cpp:28:6:void MotorComputations::setTorqueConstant(float)	16	static
