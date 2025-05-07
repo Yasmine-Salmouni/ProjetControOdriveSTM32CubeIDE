@@ -55,13 +55,14 @@
      float getRampRate();
 
      void sendText(const char* component, const char* message);
+     void sendValue(const char* component, float value, const char* format = "%.1f");
 
  private:
      UART_HandleTypeDef* ecran_uart;
 
      // Méthodes internes d'envoi
      void sendCommand(const char* cmd);
-     void sendValue(const char* component, float value, const char* format = "%.1f");
+
 
  };
 

@@ -51,6 +51,11 @@
      float getPower();
      float getGain();
      ControlMode getControlMode();
+     float getRampRate() const;
+     DirectionMode getDirection() const;
+     float getInstructionValue() const;
+     float getTorqueConstant() const;
+
 
 
      void setPowerConcentric(float power, float rampRate = 6.0f); //réecrire la fonction pour respecter le ramprate

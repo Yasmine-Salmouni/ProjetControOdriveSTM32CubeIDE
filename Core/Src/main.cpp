@@ -22,9 +22,6 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "../Inc/MotorController.hpp"
-#include "../Inc/VESCInterface.hpp"
-#include "../Inc/ScreenDisplay.hpp"
 
 /* USER CODE END Includes */
 
@@ -48,19 +45,12 @@ I2C_HandleTypeDef hi2c1;
 
 I2S_HandleTypeDef hi2s3;
 
-IWDG_HandleTypeDef hiwdg;
-
 SPI_HandleTypeDef hspi1;
 
 UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
-// Pointeur vers le contrôleur moteur
-MotorController* motor = nullptr;
-
-// Constante de couple initiale
-float initialTorqueConstant = 0.05f;
 
 /* USER CODE END PV */
 
@@ -70,12 +60,12 @@ static void MX_GPIO_Init(void);
 static void MX_I2C1_Init(void);
 static void MX_I2S3_Init(void);
 static void MX_SPI1_Init(void);
-static void MX_IWDG_Init(void);
 static void MX_USART2_UART_Init(void);
 static void MX_USART3_UART_Init(void);
 void MX_USB_HOST_Process(void);
 
 /* USER CODE BEGIN PFP */
+void vesc_send_uart(unsigned char *data, unsigned int len);
 
 /* USER CODE END PFP */
 
@@ -117,21 +107,9 @@ int main(void)
   MX_I2S3_Init();
   MX_SPI1_Init();
   MX_USB_HOST_Init();
-  MX_IWDG_Init();
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
-  HAL_IWDG_Refresh(&hiwdg);
-
-  //Création du contrôleur moteur : USART3 = VESC, USART2 = Ecran
-  motor = new MotorController(&huart3, &huart2, initialTorqueConstant);
-  motor->calibrateTorqueConstant();
-  HAL_Delay(500);
-
-  // Afficher les valeurs initiales
-  motor->updateScreen();
-  HAL_Delay(100);
-  motor->getscreen()->showWelcome();
 
   /* USER CODE END 2 */
 
@@ -139,22 +117,6 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
-	  HAL_IWDG_Refresh(&hiwdg);  // Rafraîchit le Watchdog
-
-    // Met à jour les paramètres utilisateur (mode, direction, stop, etc.)
-    motor->updateFromScreen();
-
-    // Lecture de la cadence actuelle (depuis VESC)
-    float cadence = motor->getCadence();
-
-    // Mise à jour dynamique du moteur (mode LINEAR si actif)
-    motor->update(cadence);
-
-    // Affiche les valeurs sur l'écran (couple, duty, etc.)
-    motor->updateScreen();
-
-    HAL_Delay(100);  // rafraîchissement toutes les 100 ms
-
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 
@@ -180,9 +142,8 @@ void SystemClock_Config(void)
   /** Initializes the RCC Oscillators according to the specified parameters
   * in the RCC_OscInitTypeDef structure.
   */
-  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_LSI|RCC_OSCILLATORTYPE_HSE;
+  RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
-  RCC_OscInitStruct.LSIState = RCC_LSI_ON;
   RCC_OscInitStruct.PLL.PLLState = RCC_PLL_ON;
   RCC_OscInitStruct.PLL.PLLSource = RCC_PLLSOURCE_HSE;
   RCC_OscInitStruct.PLL.PLLM = 8;
@@ -274,34 +235,6 @@ static void MX_I2S3_Init(void)
   /* USER CODE BEGIN I2S3_Init 2 */
 
   /* USER CODE END I2S3_Init 2 */
-
-}
-
-/**
-  * @brief IWDG Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_IWDG_Init(void)
-{
-
-  /* USER CODE BEGIN IWDG_Init 0 */
-
-  /* USER CODE END IWDG_Init 0 */
-
-  /* USER CODE BEGIN IWDG_Init 1 */
-
-  /* USER CODE END IWDG_Init 1 */
-  hiwdg.Instance = IWDG;
-  hiwdg.Init.Prescaler = IWDG_PRESCALER_64;
-  hiwdg.Init.Reload = 4095;
-  if (HAL_IWDG_Init(&hiwdg) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN IWDG_Init 2 */
-
-  /* USER CODE END IWDG_Init 2 */
 
 }
 
@@ -508,6 +441,12 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
+void vesc_send_uart(unsigned char *data, unsigned int len) {
+     // Envoi bloquant des données sur UART3
+     HAL_UART_Transmit(&huart3, data, len, HAL_MAX_DELAY);
+ }
+
+
 
 /* USER CODE END 4 */
 
@@ -542,4 +481,3 @@ void assert_failed(uint8_t *file, uint32_t line)
   /* USER CODE END 6 */
 }
 #endif /* USE_FULL_ASSERT */
-

@@ -1,26 +1,27 @@
 C:\ST\STM32CubeIDE_1.18.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344\tools\bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/cmath:234:3:constexpr float std::fabs(float)	1
-../Core/Src/MotorController.cpp:15:2:MotorController::MotorController(UART_HandleTypeDef*, UART_HandleTypeDef*, float)	1
-../Core/Src/MotorController.cpp:32:7:void MotorController::setDirection(DirectionMode)	1
-../Core/Src/MotorController.cpp:36:7:void MotorController::setControlMode(ControlMode)	1
-../Core/Src/MotorController.cpp:40:7:void MotorController::setInstruction(float)	6
-../Core/Src/MotorController.cpp:61:7:void MotorController::setLinearGain(float)	1
-../Core/Src/MotorController.cpp:66:7:void MotorController::setTorqueConstant(float)	1
-../Core/Src/MotorController.cpp:73:7:void MotorController::setrampRate(float)	1
-../Core/Src/MotorController.cpp:78:7:void MotorController::setCadence(float, float)	1
-../Core/Src/MotorController.cpp:85:7:void MotorController::setTorque(float, float)	1
-../Core/Src/MotorController.cpp:92:8:float MotorController::getCadence()	2
-../Core/Src/MotorController.cpp:105:8:float MotorController::getTorque()	2
-../Core/Src/MotorController.cpp:117:7:float MotorController::getDutyCycle()	4
-../Core/Src/MotorController.cpp:134:7:float MotorController::getPower()	3
-../Core/Src/MotorController.cpp:158:13:ControlMode MotorController::getControlMode()	1
-../Core/Src/MotorController.cpp:162:7:float MotorController::getGain()	1
-../Core/Src/MotorController.cpp:166:7:void MotorController::setPowerConcentric(float, float)	3
-../Core/Src/MotorController.cpp:201:7:void MotorController::setPowerEccentric(float, float)	3
-../Core/Src/MotorController.cpp:236:7:void MotorController::setLinear(float, float)	1
-../Core/Src/MotorController.cpp:248:7:void MotorController::update(float)	2
-../Core/Src/MotorController.cpp:254:7:void MotorController::stop(float)	5
-../Core/Src/MotorController.cpp:286:8:float MotorController::applyDirection(float)	2
-../Core/Src/MotorController.cpp:296:6:void MotorController::updateFromScreen()	8
-../Core/Src/MotorController.cpp:352:6:void MotorController::updateScreen()	2
-../Core/Src/MotorController.cpp:374:6:void MotorController::calibrateTorqueConstant()	4
-../Core/Src/MotorController.cpp:403:16:ScreenDisplay* MotorController::getscreen()	1
+../Core/Src/MotorController.cpp:16:1:MotorController::MotorController(UART_HandleTypeDef*, UART_HandleTypeDef*, float)	1
+../Core/Src/MotorController.cpp:34:6:void MotorController::setLinearGain(float)	2
+../Core/Src/MotorController.cpp:40:7:float MotorController::getGain()	2
+../Core/Src/MotorController.cpp:46:6:void MotorController::setrampRate(float)	1
+../Core/Src/MotorController.cpp:51:7:float MotorController::getRampRate() const	1
+../Core/Src/MotorController.cpp:56:6:void MotorController::setDirection(DirectionMode)	3
+../Core/Src/MotorController.cpp:61:15:DirectionMode MotorController::getDirection() const	3
+../Core/Src/MotorController.cpp:67:6:void MotorController::setControlMode(ControlMode)	7
+../Core/Src/MotorController.cpp:82:13:ControlMode MotorController::getControlMode()	7
+../Core/Src/MotorController.cpp:99:6:void MotorController::setInstruction(float)	7
+../Core/Src/MotorController.cpp:121:7:float MotorController::getInstructionValue() const	2
+../Core/Src/MotorController.cpp:128:6:void MotorController::setCadence(float, float)	2
+../Core/Src/MotorController.cpp:135:7:float MotorController::getCadence()	2
+../Core/Src/MotorController.cpp:144:6:void MotorController::setTorque(float, float)	2
+../Core/Src/MotorController.cpp:152:7:float MotorController::getTorque()	2
+../Core/Src/MotorController.cpp:162:6:void MotorController::setPowerConcentric(float, float)	4
+../Core/Src/MotorController.cpp:180:6:void MotorController::setPowerEccentric(float, float)	4
+../Core/Src/MotorController.cpp:198:7:float MotorController::getPower()	2
+../Core/Src/MotorController.cpp:209:6:void MotorController::setLinear(float, float)	2
+../Core/Src/MotorController.cpp:222:6:void MotorController::update(float)	2
+../Core/Src/MotorController.cpp:230:6:void MotorController::stop(float)	6
+../Core/Src/MotorController.cpp:256:7:float MotorController::applyDirection(float)	2
+../Core/Src/MotorController.cpp:262:6:void MotorController::setTorqueConstant(float)	2
+../Core/Src/MotorController.cpp:269:7:float MotorController::getTorqueConstant() const	1
+../Core/Src/MotorController.cpp:273:6:void MotorController::calibrateTorqueConstant()	7
+../Core/Src/MotorController.cpp:300:7:float MotorController::getDutyCycle()	2

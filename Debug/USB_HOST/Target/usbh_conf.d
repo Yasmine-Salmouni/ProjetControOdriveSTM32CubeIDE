@@ -1,6 +1,6 @@
 USB_HOST/Target/usbh_conf.o: ../USB_HOST/Target/usbh_conf.c \
  ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h \
- ../USB_HOST/Target/usbh_conf.h ../Core/Inc/main.h \
+ ../USB_HOST/Target/usbh_conf.h ../Core/Inc/main.hpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -28,7 +28,6 @@ USB_HOST/Target/usbh_conf.o: ../USB_HOST/Target/usbh_conf.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_iwdg.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h \
@@ -43,7 +42,7 @@ USB_HOST/Target/usbh_conf.o: ../USB_HOST/Target/usbh_conf.c \
  ../USB_HOST/Target/usbh_platform.h ../USB_HOST/App/usb_host.h
 ../Middlewares/ST/STM32_USB_Host_Library/Core/Inc/usbh_core.h:
 ../USB_HOST/Target/usbh_conf.h:
-../Core/Inc/main.h:
+../Core/Inc/main.hpp:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -71,7 +70,6 @@ USB_HOST/Target/usbh_conf.o: ../USB_HOST/Target/usbh_conf.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2c_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_i2s_ex.h:
-../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_iwdg.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_spi.h:
