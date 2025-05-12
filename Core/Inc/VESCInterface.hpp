@@ -22,6 +22,7 @@ typedef struct {
     float rpm;
     float current;
     float dutyCycle;
+    float voltage;
     // ... (autres champs éventuellement)
 } VESCValues;
 
@@ -131,7 +132,8 @@ private:
             values.rpm = (float)rpm_int;
 
             // Voltage (float en V)
-
+            uint16_t rawV = ((uint16_t)rxPayload[27] << 8) | rxPayload[28];
+            values.voltage = rawV / 10.0f;  // division par 10 pour avoir la tension en volts
 
 
         } else {
@@ -221,11 +223,13 @@ public:
         }
         return values.dutyCycle;
     }
+
+    float getVoltage() {
+        getValues();
+        return values.voltage;
+    }
+
 };
 
-float getVoltage() {
-	if (!getValues()) {
-		return -1.0f;
-	}
-	return values.dutyCycle;
-}
+
+

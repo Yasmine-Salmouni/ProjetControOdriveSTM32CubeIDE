@@ -32,7 +32,7 @@ Core/Src/MotorController.o: ../Core/Src/MotorController.cpp \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h \
- ../Core/Src/../Inc/VESCInterface.hpp \
+ ../Core/Src/../Inc/VESCInterface.hpp ../Core/Src/../Inc/main.hpp \
  ../Core/Src/../Inc/ScreenDisplay.hpp \
  ../Core/Src/../Inc/MotorController.hpp \
  ../Core/Src/../Inc/MotorComputations.hpp
@@ -71,6 +71,7 @@ Core/Src/MotorController.o: ../Core/Src/MotorController.cpp \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_hcd.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_ll_usb.h:
 ../Core/Src/../Inc/VESCInterface.hpp:
+../Core/Src/../Inc/main.hpp:
 ../Core/Src/../Inc/ScreenDisplay.hpp:
 ../Core/Src/../Inc/MotorController.hpp:
 ../Core/Src/../Inc/MotorComputations.hpp:

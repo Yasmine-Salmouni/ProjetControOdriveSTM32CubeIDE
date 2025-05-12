@@ -20,6 +20,12 @@
 #include <main.hpp>
 #include "usb_host.h"
 
+
+#include <string.h>
+
+#include "../Inc/MotorController.hpp"
+#include "../Inc/ScreenDisplay.hpp"
+
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 
@@ -51,6 +57,14 @@ UART_HandleTypeDef huart2;
 UART_HandleTypeDef huart3;
 
 /* USER CODE BEGIN PV */
+
+ScreenDisplay* screen = nullptr;
+
+// Pointeur vers le contrôleur moteur
+MotorController* motor = nullptr;
+
+// Constante de couple initiale
+float initialTorqueConstant = 0.0044f; //Calibration du 08/05/2025
 
 /* USER CODE END PV */
 
@@ -110,6 +124,59 @@ int main(void)
   MX_USART2_UART_Init();
   MX_USART3_UART_Init();
   /* USER CODE BEGIN 2 */
+  screen = new ScreenDisplay(&huart2);
+    screen->sendText("t0", "Hello STM32");
+
+    //Création du contrôleur moteur : USART2 = VESC, USART3 = Ecran
+    motor = new MotorController(&huart3, &huart2, initialTorqueConstant);
+    //motor->getscreen()->sendText("t0", "Init OK");
+    //_____________________________________________________________________________
+    //Test Torque Constant
+
+    //motor->getTorqueConstant();  // Réussi
+
+    //motor->getTorqueConstant();  // Réussi
+
+    //motor->calibrateTorqueConstant();
+    //motor->getTorqueConstant();
+
+    //_____________________________________________________________________________
+
+
+    //Test sur le Gain
+
+    //motor->getGain(); // Réussi
+
+    //motor->setLinearGain(0.1);
+    //motor->getGain(); //Réussi
+
+    //_____________________________________________________________________________
+
+    //Test sur le rampRate
+
+    //motor->getRampRate(); // Réussi
+
+    //motor->setrampRate(50);
+    //motor->getRampRate(); //Réussi
+
+    //_____________________________________________________________________________
+
+    //Test sur la direction
+
+    //motor->getDirection(); //Résultat forward Réussi
+
+    //motor->setDirection(DirectionMode::REVERSE);
+    //motor->getDirection(); //Réussi
+
+    //______________________________________________________________________________
+
+    //Test sur le mode de contrôle
+
+    //motor->getControlMode(); //réussi
+    motor->setControlMode(ControlMode::TORQUE);
+    //motor->getControlMode();
+
+    //_______________________________________________________________________
 
   /* USER CODE END 2 */
 
@@ -117,6 +184,21 @@ int main(void)
   /* USER CODE BEGIN WHILE */
   while (1)
   {
+	  motor->getVoltage();
+
+	  //motor->setCurrent(0.3);
+	  //motor->getCurrent();
+
+	  //motor->setInstruction(2);
+	  //motor->getTorque();
+
+	  //motor->setCadence(5000);
+	  //motor->getPower();
+	  //motor->getTorque();
+	  //HAL_Delay(5000); // 5000 ms pour un 60000 ms de timout
+	  //motor->stop();
+	  //HAL_Delay(5000); // 5000 ms pour un 60000 ms de timout
+	  motor->setCadence(000);
     /* USER CODE END WHILE */
     MX_USB_HOST_Process();
 

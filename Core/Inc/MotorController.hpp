@@ -40,10 +40,10 @@
  public:
      MotorController(UART_HandleTypeDef* controlUart, UART_HandleTypeDef* screenUart, float torqueConstant);
 
-     void stop(float rampRate = 6.0f);
+     void stop();
 
-     void setTorque(float torque, float rampRate = 6.0f); //réecrire la fonction pour respecter le ramprate
-     void setCadence(float rpm, float rampRate = 6.0f); //réecrire la fonction pour respecter le ramprate
+     void setTorque(float torque); //réecrire la fonction pour respecter le ramprate
+     void setCadence(float rpm); //réecrire la fonction pour respecter le ramprate
 
      float getCadence();
      float getTorque();
@@ -56,10 +56,12 @@
      float getInstructionValue() const;
      float getTorqueConstant() const;
 
+     float getVoltage() const;
 
 
-     void setPowerConcentric(float power, float rampRate = 6.0f); //réecrire la fonction pour respecter le ramprate
-     void setPowerEccentric(float power, float rampRate = 6.0f); //réecrire la fonction pour respecter le ramprate
+
+     void setPowerConcentric(float power); //réecrire la fonction pour respecter le ramprate
+     void setPowerEccentric(float power); //réecrire la fonction pour respecter le ramprate
      void setLinear(float gain, float cadence);
      void update(float measured_cadence);  // à appeler à chaque boucle, ex: toutes les 100ms
 
@@ -69,6 +71,9 @@
      void setLinearGain(float gain);
      void setrampRate(float rampRate);
      void setTorqueConstant(float torque);
+
+     void setCurrent(float current);
+     float getCurrent();
 
 
      void updateFromScreen();

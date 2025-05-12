@@ -1,27 +1,39 @@
+../Core/Src/../Inc/VESCInterface.hpp:35:9:int VESCInterface::getValues()	320	static
+../Core/Src/../Inc/VESCInterface.hpp:147:5:VESCInterface::VESCInterface(UART_HandleTypeDef*)	16	static
+../Core/Src/../Inc/VESCInterface.hpp:151:14:uint16_t VESCInterface::crc16(const uint8_t*, uint16_t)	32	static
+../Core/Src/../Inc/VESCInterface.hpp:168:10:void VESCInterface::setCurrent(float)	40	static
+../Core/Src/../Inc/VESCInterface.hpp:189:10:void VESCInterface::setRPM(int32_t)	32	static
+../Core/Src/../Inc/VESCInterface.hpp:206:11:float VESCInterface::getRPM()	16	static
+../Core/Src/../Inc/VESCInterface.hpp:213:11:float VESCInterface::getCurrent()	16	static
+../Core/Src/../Inc/VESCInterface.hpp:220:11:float VESCInterface::getDutyCycle()	16	static
+../Core/Src/../Inc/VESCInterface.hpp:227:11:float VESCInterface::getVoltage()	16	static
 C:\ST\STM32CubeIDE_1.18.0\STM32CubeIDE\plugins\com.st.stm32cube.ide.mcu.externaltools.gnu-tools-for-stm32.13.3.rel1.win32_1.0.0.202411081344\tools\bin/../lib/gcc/arm-none-eabi/13.3.1/../../../../arm-none-eabi/include/c++/13.3.1/cmath:234:3:constexpr float std::fabs(float)	16	static
 ../Core/Src/MotorController.cpp:16:1:MotorController::MotorController(UART_HandleTypeDef*, UART_HandleTypeDef*, float)	32	static
-../Core/Src/MotorController.cpp:34:6:void MotorController::setLinearGain(float)	16	static
-../Core/Src/MotorController.cpp:40:7:float MotorController::getGain()	16	static
-../Core/Src/MotorController.cpp:46:6:void MotorController::setrampRate(float)	16	static
-../Core/Src/MotorController.cpp:51:7:float MotorController::getRampRate() const	16	static
-../Core/Src/MotorController.cpp:56:6:void MotorController::setDirection(DirectionMode)	16	static
-../Core/Src/MotorController.cpp:61:15:DirectionMode MotorController::getDirection() const	16	static
-../Core/Src/MotorController.cpp:67:6:void MotorController::setControlMode(ControlMode)	24	static
-../Core/Src/MotorController.cpp:82:13:ControlMode MotorController::getControlMode()	24	static
-../Core/Src/MotorController.cpp:99:6:void MotorController::setInstruction(float)	16	static
-../Core/Src/MotorController.cpp:121:7:float MotorController::getInstructionValue() const	16	static
-../Core/Src/MotorController.cpp:128:6:void MotorController::setCadence(float, float)	32	static
-../Core/Src/MotorController.cpp:135:7:float MotorController::getCadence()	24	static
-../Core/Src/MotorController.cpp:144:6:void MotorController::setTorque(float, float)	32	static
-../Core/Src/MotorController.cpp:152:7:float MotorController::getTorque()	32	static
-../Core/Src/MotorController.cpp:162:6:void MotorController::setPowerConcentric(float, float)	48	static
-../Core/Src/MotorController.cpp:180:6:void MotorController::setPowerEccentric(float, float)	48	static
-../Core/Src/MotorController.cpp:198:7:float MotorController::getPower()	32	static
-../Core/Src/MotorController.cpp:209:6:void MotorController::setLinear(float, float)	40	static
-../Core/Src/MotorController.cpp:222:6:void MotorController::update(float)	16	static
-../Core/Src/MotorController.cpp:230:6:void MotorController::stop(float)	32	static
-../Core/Src/MotorController.cpp:256:7:float MotorController::applyDirection(float)	16	static
-../Core/Src/MotorController.cpp:262:6:void MotorController::setTorqueConstant(float)	16	static
-../Core/Src/MotorController.cpp:269:7:float MotorController::getTorqueConstant() const	16	static
-../Core/Src/MotorController.cpp:273:6:void MotorController::calibrateTorqueConstant()	32	static
-../Core/Src/MotorController.cpp:300:7:float MotorController::getDutyCycle()	24	static
+../Core/Src/MotorController.cpp:32:6:void MotorController::setTorqueConstant(float)	16	static
+../Core/Src/MotorController.cpp:38:7:float MotorController::getTorqueConstant() const	16	static
+../Core/Src/MotorController.cpp:43:6:void MotorController::calibrateTorqueConstant()	32	static
+../Core/Src/MotorController.cpp:80:6:void MotorController::setLinearGain(float)	16	static
+../Core/Src/MotorController.cpp:86:7:float MotorController::getGain()	16	static
+../Core/Src/MotorController.cpp:92:6:void MotorController::setrampRate(float)	16	static
+../Core/Src/MotorController.cpp:97:7:float MotorController::getRampRate() const	16	static
+../Core/Src/MotorController.cpp:102:6:void MotorController::setDirection(DirectionMode)	16	static
+../Core/Src/MotorController.cpp:107:15:DirectionMode MotorController::getDirection() const	16	static
+../Core/Src/MotorController.cpp:113:6:void MotorController::setControlMode(ControlMode)	24	static
+../Core/Src/MotorController.cpp:128:13:ControlMode MotorController::getControlMode()	24	static
+../Core/Src/MotorController.cpp:145:6:void MotorController::setInstruction(float)	16	static
+../Core/Src/MotorController.cpp:167:7:float MotorController::getInstructionValue() const	16	static
+../Core/Src/MotorController.cpp:174:6:void MotorController::setCadence(float)	24	static
+../Core/Src/MotorController.cpp:181:7:float MotorController::getCadence()	24	static
+../Core/Src/MotorController.cpp:190:6:void MotorController::setTorque(float)	24	static
+../Core/Src/MotorController.cpp:198:6:void MotorController::setCurrent(float)	16	static
+../Core/Src/MotorController.cpp:202:7:float MotorController::getCurrent()	24	static
+../Core/Src/MotorController.cpp:208:7:float MotorController::getTorque()	32	static
+../Core/Src/MotorController.cpp:218:6:void MotorController::setPowerConcentric(float)	40	static
+../Core/Src/MotorController.cpp:238:6:void MotorController::setPowerEccentric(float)	40	static
+../Core/Src/MotorController.cpp:256:7:float MotorController::getPower()	32	static
+../Core/Src/MotorController.cpp:267:6:void MotorController::setLinear(float, float)	40	static
+../Core/Src/MotorController.cpp:280:6:void MotorController::update(float)	16	static
+../Core/Src/MotorController.cpp:288:6:void MotorController::stop()	40	static
+../Core/Src/MotorController.cpp:315:7:float MotorController::getVoltage() const	112	static
+../Core/Src/MotorController.cpp:353:7:float MotorController::applyDirection(float)	16	static
+../Core/Src/MotorController.cpp:361:7:float MotorController::getDutyCycle()	24	static

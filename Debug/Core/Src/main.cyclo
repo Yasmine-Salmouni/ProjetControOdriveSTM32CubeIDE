@@ -1,10 +1,10 @@
-../Core/Src/main.cpp:81:5:int main()	1
-../Core/Src/main.cpp:132:6:void SystemClock_Config()	3
-../Core/Src/main.cpp:178:13:void MX_I2C1_Init()	2
-../Core/Src/main.cpp:212:13:void MX_I2S3_Init()	2
-../Core/Src/main.cpp:246:13:void MX_SPI1_Init()	2
-../Core/Src/main.cpp:284:13:void MX_USART2_UART_Init()	2
-../Core/Src/main.cpp:317:13:void MX_USART3_UART_Init()	2
-../Core/Src/main.cpp:350:13:void MX_GPIO_Init()	1
-../Core/Src/main.cpp:444:6:void vesc_send_uart(unsigned char*, unsigned int)	1
-../Core/Src/main.cpp:457:6:void Error_Handler()	1
+../Core/Src/main.cpp:95:5:int main()	1
+../Core/Src/main.cpp:214:6:void SystemClock_Config()	3
+../Core/Src/main.cpp:260:13:void MX_I2C1_Init()	2
+../Core/Src/main.cpp:294:13:void MX_I2S3_Init()	2
+../Core/Src/main.cpp:328:13:void MX_SPI1_Init()	2
+../Core/Src/main.cpp:366:13:void MX_USART2_UART_Init()	2
+../Core/Src/main.cpp:399:13:void MX_USART3_UART_Init()	2
+../Core/Src/main.cpp:432:13:void MX_GPIO_Init()	1
+../Core/Src/main.cpp:526:6:void vesc_send_uart(unsigned char*, unsigned int)	1
+../Core/Src/main.cpp:539:6:void Error_Handler()	1
