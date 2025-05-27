@@ -38,39 +38,85 @@
  // --- Fonctions spécifiques de haut niveau ---
 
  void ScreenDisplay::showCadence(float rpm) {
-     sendValue("cad_val", rpm);  // champ texte nommé "cad"
+     sendValue("cad_val", rpm, "%.1f");
  }
 
- void ScreenDisplay::showTorque(float torque) {
-     sendValue("tor_val", torque);  // champ texte nommé "tor"
- }
+ //Pour le graphe
 
- void ScreenDisplay::showPower(float power) {
-     sendValue("pow_val", power);  // champ texte nommé "pow"
- }
+/* void ScreenDisplay::showCadence(float rpm) {
+    static bool graphConfigured = false;
 
- void ScreenDisplay::showMode(const char* modeName) {
-     sendText("mode_show", modeName);  // champ texte nommé "mode"
- }
-
- void ScreenDisplay::showMode(ControlMode mode) {
-    const char* modeStr = "Inconnu";
-
-    switch (mode) {
-        case ControlMode::CADENCE:           modeStr = "Cadence"; break;
-        case ControlMode::TORQUE:            modeStr = "Couple"; break;
-        case ControlMode::POWER_CONCENTRIC:  modeStr = "POWER_CONCENTRIC"; break;
-        case ControlMode::POWER_ECCENTRIC:   modeStr = "POWER_ECCENTRIC"; break;
-        case ControlMode::LINEAR:            modeStr = "Lineaire"; break;
-        default: break;
+    if (!graphConfigured) {
+        sendCommand("cad_val.minval=0");
+        sendCommand("cad_val.maxval=8270");
+        graphConfigured = true;
     }
 
-    showMode(modeStr);  // ← Appelle ta version existante
+    char cmd[40];
+    sprintf(cmd, "add cad_val,0,%.0f", rpm);
+    sendCommand(cmd);
+}*/
+
+
+ void ScreenDisplay::showTorque(float torque) {
+     sendValue("tor_val", torque, "%.4f");
+ }
+
+ //Pour le graphe
+
+/* void ScreenDisplay::showTorque(float torque) {
+    char cmd[50];
+    sprintf(cmd, "add tor_val,0,%.0f", torque);  // envoie une valeur entière
+    sendCommand(cmd);
+}*/
+
+
+ void ScreenDisplay::showPower(float power) {
+     sendValue("pow_val", power, "%.1f");
+ }
+
+//Pour le graphe
+
+ /*void ScreenDisplay::showPower(float power) {
+    char cmd[50];
+    sprintf(cmd, "add pow_val,0,%.0f", power);  // conversion en entier pour le graphe
+    sendCommand(cmd);
+}*/
+
+void ScreenDisplay::showAll(float rpm, float torque, float power) {
+    char cmd[50];
+
+    // Canal 0 : cadence (RPM)
+    sprintf(cmd, "add multi_val,0,%.0f", rpm);
+    sendCommand(cmd);
+
+    // Canal 1 : torque (Nm)
+    sprintf(cmd, "add multi_val,1,%.0f", torque);
+    sendCommand(cmd);
+
+    // Canal 2 : power (W)
+    sprintf(cmd, "add multi_val,2,%.0f", power);
+    sendCommand(cmd);
+}
+
+
+ void ScreenDisplay::showMode(ControlMode mode) {
+    
+    const char* modeName = "UNKNOWN";
+    switch (mode) {
+        case ControlMode::CADENCE: modeName = "Cadence"; break;
+        case ControlMode::TORQUE: modeName = "Torque"; break;
+        case ControlMode::POWER_CONCENTRIC: modeName = "Power Concentric"; break;
+        case ControlMode::POWER_ECCENTRIC: modeName = "Power Eccentric"; break;
+        case ControlMode::LINEAR: modeName = "Linear"; break;
+    }
+    sendText("mode_show", modeName);
+    
 }
 
 
  void ScreenDisplay::showGain(float LinearGain) {
-    sendValue("gain_val", LinearGain);  // champ texte nommé "gain"
+    sendValue("gain_val", LinearGain, "%.2f");
 }
 
  void ScreenDisplay::showError(const char* message) {
@@ -154,8 +200,7 @@ void ScreenDisplay::showDutyCycle(float duty) {
 }
 
 void ScreenDisplay::showDirection(DirectionMode dir_show) {
-    const char* label = (dir_show == DirectionMode::REVERSE) ? "REVERSE" : "FORWARD";
-    sendText("dir_show", label);
+    sendText("dir_show", (dir_show == DirectionMode::REVERSE) ? "REVERSE" : "FORWARD");
 }
 
 bool ScreenDisplay::getStop() {
@@ -165,6 +210,7 @@ bool ScreenDisplay::getStop() {
     return (value == 1);             // Retourne vrai si activé
 }
 
+//tester si ça marche
 DirectionMode ScreenDisplay::getDirection() {
     sendCommand("get dir.val");     // dir
     int32_t value = readInt32();    // Lecture 0 ou 1
@@ -183,7 +229,6 @@ bool ScreenDisplay::getCalibrateRequest() {
     sendCommand("get btn_calib.val");  // Lire l'état du bouton calibration btn_calib
     int32_t value = readInt32();
     return (value == 1);  // 1 = pressé
-    //configurer calib_state aussi
 }
 
 void ScreenDisplay::showCalibrationStatus(bool success) {

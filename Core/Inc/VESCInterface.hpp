@@ -186,7 +186,7 @@ public:
         HAL_UART_Transmit(uart, buf, 10, 100);
     }
 
-    void setRPM(int32_t rpm) {
+    void setRPMbrute(int32_t rpm) {
         uint8_t buf[11];
         uint16_t crc;
         buf[0] = 0x02;
@@ -209,6 +209,21 @@ public:
         }
         return values.rpm;
     }
+
+    void setRPM(int32_t rpmConsigne) {
+        // 1. Récupérer la vitesse de pédalage actuelle (mesurée par le VESC)
+        float currentRPM = getRPM();  // appelle COMM_GET_VALUES pour obtenir le RPM actuel
+
+        // 2. Calculer la vitesse d'assistance nécessaire (vitesse compensée)
+        int32_t compensatedRPM = rpmConsigne - currentRPM; //Voir si ça pose probleme
+        if (compensatedRPM < 0) {
+            compensatedRPM = 0;  // Si le pédalage dépasse la consigne, pas d’assistance (0 RPM moteur)
+        }
+
+        // 3. Préparer et envoyer la nouvelle consigne (vitesse compensée) au VESC
+        setRPMbrute(compensatedRPM);
+    }
+
 
     float getCurrent() {
         if (!getValues()) {

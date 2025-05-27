@@ -30,7 +30,6 @@
      void showCadence(float rpm);
      void showTorque(float torque);
      void showPower(float power);
-     void showMode(const char* modeName);
      void showMode(ControlMode mode);
      void showGain(float LinearGain);
      void showDutyCycle(float duty);
@@ -56,6 +55,8 @@
 
      void sendText(const char* component, const char* message);
      void sendValue(const char* component, float value, const char* format = "%.1f");
+
+     void showAll(float rpm, float torque, float power);
 
  private:
      UART_HandleTypeDef* ecran_uart;
